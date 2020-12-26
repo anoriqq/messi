@@ -29,10 +29,9 @@ jobs:
       - name: build
         run: yarn build
       - name: push
-        uses: anoriqq/action-commit-to-branch@master
-        with:
-          commit_message: 'release'
-          branch: 'gh-pages'
-          add: 'build --force'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "$GITHUB_ACTOR"
+          git add build --force
+          git commit -m 'release'
+          git push origin gh-pages
