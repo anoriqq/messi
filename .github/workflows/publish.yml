@@ -17,8 +17,9 @@ jobs:
       - name: build
         run: yarn build
       - name: push
-        uses: EndBug/add-and-commit@v6.2.0
+        uses: Automattic/action-commit-to-branch@master
         with:
-          message: 'release'
-          add: 'build -f'
-          branch: gh-pages
+          commit_message: 'release'
+          branch: 'gh-pages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
