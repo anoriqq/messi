@@ -34,4 +34,4 @@ jobs:
           git config --global user.name "$GITHUB_ACTOR"
           git add build --force
           git commit -m 'release'
-          git push origin gh-pages
+          git push origin HEAD:gh-pages
