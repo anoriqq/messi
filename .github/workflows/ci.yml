@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -61,7 +63,7 @@ jobs:
         run: |
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "$GITHUB_ACTOR"
-          rm -rf $(ls -I build)
+          rm -rf $(ls -I build -I CNAME)
           mv build/* .
           rm -r build
           git add .
